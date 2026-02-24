@@ -1,174 +1,246 @@
-🔐 AI-Powered Port Scan Analyzer & Attack Surface Prioritizer
-📌 Project Overview
+🔐 AI Port Scan Risk Intelligence Engine v2.0
 
-This project is an AI-driven cybersecurity tool that analyzes Nmap scan results and automatically prioritizes attack surface risk using machine learning.
-It converts raw network scan data into meaningful security insights such as Low, Medium, or High risk for each host.
+🚀 Production-Ready AI-Powered Network Risk Assessment Platform
+🧠 Explainable Machine Learning + FastAPI Backend + Drift Monitoring
 
-The system demonstrates a complete end-to-end pipeline:
+🌟 Overview
 
-Network Scanning → Feature Engineering → ML-based Risk Prediction → Explainable Output
+The AI Port Scan Risk Intelligence Engine transforms raw Nmap scan data into actionable security intelligence using advanced machine learning, hybrid risk scoring, and explainable AI.
 
-🎯 Objectives
+Unlike traditional scanners that only list open ports, this system:
 
-Automate analysis of Nmap scan results
+Predicts host-level risk using ML (XGBoost + Calibration)
 
-Reduce manual effort in port and service risk assessment
+Explains why a system is risky using SHAP
 
-Use Machine Learning (Random Forest) to classify host risk
+Combines ML predictions with port intelligence database
 
-Provide explainable security decisions suitable for SOC & academic use
+Detects data drift in real time
 
-🧠 Key Features
+Supports automated retraining pipelines
 
-✔ Parses Nmap XML scan output
+Provides production-ready FastAPI backend
 
-✔ Extracts security-relevant features (ports, services, CVSS, OS)
+This is not just a script — this is a structured, deployable security intelligence engine.
 
-✔ Generates large realistic datasets for ML training
+🏗 Architecture (v2.0)
+                Nmap XML Scan
+                      ↓
+         Feature Engineering (9 Features)
+                      ↓
+        XGBoost Model + Probability Calibration
+                      ↓
+        SHAP Explainability + Hybrid Risk Logic
+                      ↓
+       ┌──────────────┼──────────────┐
+       ↓              ↓              ↓
+   Dashboard       Full Report       Admin
+  (Frontend)      (Technical)     (Backend Only)
+🧠 Machine Learning Stack
+🔹 Model
 
-✔ Trains Random Forest risk classification model
+XGBoost Classifier
 
-✔ Predicts risk for new scans
+Hyperparameter tuned
 
-✔ Master demo script with detailed risk explanation
+Class-weight balanced
 
-🏗 Project Architecture
-Nmap Scan
-   ↓
-XML Parsing
-   ↓
-Feature Engineering
-   ↓
-Dataset Creation
-   ↓
-ML Model Training
-   ↓
-Risk Prediction (Low / Medium / High)
+5-fold cross validation
 
-📂 Project Structure
+🔹 Probability Calibration
+
+CalibratedClassifierCV
+
+Reliable confidence scoring
+
+Reduced Brier score
+
+🔹 Explainability
+
+SHAP TreeExplainer
+
+Feature contribution breakdown
+
+Risk impact direction
+
+🔹 Hybrid Scoring
+
+ML prediction
+
+Port intelligence override logic
+
+Severity amplification rules
+
+📊 Feature Engineering (9 Core Features)
+Feature	Purpose
+open_ports_count	Attack surface size
+service_count	Service diversity
+avg_cvss	Vulnerability severity
+uncommon_ports	Suspicious port usage
+os_flag	OS risk profiling
+port_severity_score	Aggregated port risk
+high_risk_port_count	Critical exposure
+service_entropy	Service randomness
+cvss_variance	Vulnerability spread
+⚙️ FastAPI Backend (Production Ready)
+API Endpoints
+Method	Endpoint	Purpose
+POST	/scan	Analyze Nmap XML (Dashboard view)
+GET	/report/{scan_id}	Detailed technical report
+GET	/admin/status	Backend metrics (API key required)
+GET	/health	Health check
+GET	/docs	Swagger UI
+🚀 Quick Start
+1️⃣ Install Dependencies
+pip install -r requirements.txt
+pip install -r requirements_api.txt
+2️⃣ Start API Server
+python api.py
+
+API runs on:
+
+http://localhost:8000
+
+Swagger UI:
+
+http://localhost:8000/docs
+3️⃣ Analyze a Scan
+curl -X POST "http://localhost:8000/scan" \
+  -F "xml_file=@nmap_scans/sample_scan.xml"
+🔎 What Makes This Different?
+
+✔ Not just port listing
+✔ ML-based risk classification
+✔ Explainable AI decisions
+✔ Hybrid port + ML consensus
+✔ Drift detection monitoring
+✔ Auto-retraining capability
+✔ Clean API separation
+✔ Production deployment ready
+
+📈 Model Performance (Test Set)
+
+Accuracy: ~84–90% (depending on dataset realism)
+
+Weighted F1: ~0.84+
+
+Calibrated confidence reliability
+
+Lower Brier Score after calibration
+
+🛡 Security Intelligence Capabilities
+
+Detects high-risk exposure (SMB, RDP, DB ports)
+
+CVE mapping with real-world examples
+
+MITRE ATT&CK tactic mapping
+
+Risk justification reasoning
+
+Host-level security score (0–100)
+
+🔄 Drift Detection & Retraining
+
+Monitors distribution shift in:
+
+open_ports_count
+
+avg_cvss
+
+service_count
+
+Uses KS-test + statistical drift %
+
+Auto-retraining trigger logic
+
+Logs operational metrics
+
+📦 Project Structure
 AI_PortScan_Analyzer/
 │
+├── api.py
 ├── scripts/
-│   ├── parse_nmap.py
-│   ├── feature_engineering.py
-│   ├── train_model.py
 │   ├── predict_risk.py
-│   └── master_demo_explained.py
+│   ├── train_model.py
+│   ├── drift_detection.py
+│   ├── retrain_pipeline.py
 │
 ├── data/
+│   ├── port_knowledge.py
 │   ├── generate_dataset.py
-│   └── dataset.csv
 │
 ├── model/
-│   └── rf_model.pkl   (ignored in git)
-│
-├── nmap_scans/
-│   └── *.xml          (ignored in git)
-│
-├── .gitignore
+├── logs/
+├── requirements.txt
+├── requirements_api.txt
 └── README.md
+🏷 Versioning
+v1.0
 
-⚙️ Technologies Used
+Console-based ML risk predictor
 
-Nmap – Network scanning
+v2.0
 
-Python 3.11+
+FastAPI backend
 
-Pandas – Data processing
+XGBoost integration
 
-Scikit-learn – Machine Learning
+Probability calibration
 
-Random Forest Classifier
+SHAP explainability
 
-Git & GitHub – Version control
+Hybrid scoring engine
 
-🚀 How to Run the Project
-1️⃣ Install Requirements
-pip install pandas scikit-learn joblib
+Drift monitoring
 
+Auto-retraining pipeline
 
-Ensure Nmap is installed and added to PATH:
+🎯 Use Cases
 
-nmap --version
+SOC dashboards
 
-2️⃣ Generate Dataset (100+ rows)
-python data/generate_dataset.py
+Vulnerability assessment automation
 
-3️⃣ Train ML Model
-python scripts/train_model.py
+Security analytics research
 
-4️⃣ Run Full End-to-End Demo (Recommended)
-python scripts/master_demo_explained.py
+AI-driven cybersecurity education
 
+Resume / portfolio demonstration
 
-This will:
+🔐 Security Design
 
-Run Nmap scan
+No model internals exposed to dashboard
 
-Extract features
+Admin endpoint protected via API key
 
-Load ML model
+No raw scan data persisted
 
-Predict risk
+Temporary files cleaned automatically
 
-Explain why risk is High / Medium / Low
+Structured error handling
 
-📊 Sample Output
-Host: 127.0.0.1
-OS: Windows
-Open Ports: 4
-Services: msrpc, microsoft-ds, vmware-auth
-Average CVSS: 7.77
-Predicted Risk: High
-Explanation: High CVSS score, uncommon ports detected
+⭐ Why This Project Matters
 
-🧪 ML Model Details
+This project demonstrates:
 
-Algorithm: Random Forest Classifier
+Applied Machine Learning
 
-Input Features:
+Explainable AI
 
-Open ports count
+Cybersecurity domain knowledge
 
-Service count
+Backend engineering
 
-Average CVSS score
+API architecture design
 
-Uncommon ports flag
+Model monitoring & retraining strategy
 
-OS flag
+This is not a toy script — it is a structured AI-driven security platform.
 
-Output: Risk Category (Low / Medium / High)
+🏁 Status
 
-🎓 Academic Relevance
-
-This project is suitable for:
-
-Final Year Engineering Project
-
-Cybersecurity / AI / Forensics domain
-
-Demonstrates AI + Security integration
-
-Scalable to enterprise networks
-
-🔮 Future Enhancements
-
-CVE database integration (NVD)
-
-Real-time scanning dashboard
-
-SIEM integration
-
-Deep learning-based anomaly detection
-
-Dark web threat intelligence mapping
-
-👤 Author
-
-Vaibhav Sandbhor
-Cybersecurity & AI Enthusiast
-
-⭐ GitHub
-
-If you like this project, please ⭐ star the repository!
+✅ Production-Structured
+✅ Version 2.0
+✅ Explainable AI Enabled
+✅ Drift Monitoring Integrated
