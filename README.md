@@ -1,170 +1,209 @@
-🔐 AI Port Scan Risk Intelligence Engine v2.0
+# 🔐 AI Port Scan Risk Intelligence Engine v2.0
 
-🚀 Production-Ready AI-Powered Network Risk Assessment Platform
-🧠 Explainable Machine Learning + FastAPI Backend + Drift Monitoring
+> 🚀 **Production-Ready AI-Powered Network Risk Assessment Platform**  
+> 🧠 Explainable Machine Learning • Hybrid Risk Scoring • FastAPI Backend • Drift Monitoring  
 
-🌟 Overview
+---
 
-The AI Port Scan Risk Intelligence Engine transforms raw Nmap scan data into actionable security intelligence using advanced machine learning, hybrid risk scoring, and explainable AI.
+## 🌟 Overview
+
+The **AI Port Scan Risk Intelligence Engine** transforms raw **Nmap scan results** into structured, explainable, and actionable security intelligence.
 
 Unlike traditional scanners that only list open ports, this system:
 
-Predicts host-level risk using ML (XGBoost + Calibration)
+- **Predicts host-level risk using ML (XGBoost + Calibration)**
+- **Explains WHY a system is risky using SHAP**
+- **Combines ML predictions with a Port Intelligence Database**
+- **Detects data drift automatically**
+- **Supports automated retraining pipelines**
+- **Provides a production-ready FastAPI backend**
 
-Explains why a system is risky using SHAP
+> This is not just a scanner — this is a structured **AI-driven Security Intelligence Engine**.
 
-Combines ML predictions with port intelligence database
+---
 
-Detects data drift in real time
+# 🏗 Architecture (v2.0)
 
-Supports automated retraining pipelines
-
-Provides production-ready FastAPI backend
-
-This is not just a script — this is a structured, deployable security intelligence engine.
-
-🏗 Architecture (v2.0)
+```text
                 Nmap XML Scan
                       ↓
          Feature Engineering (9 Features)
                       ↓
-        XGBoost Model + Probability Calibration
+        XGBoost + Probability Calibration
                       ↓
-        SHAP Explainability + Hybrid Risk Logic
+        SHAP Explainability + Hybrid Logic
                       ↓
        ┌──────────────┼──────────────┐
        ↓              ↓              ↓
    Dashboard       Full Report       Admin
   (Frontend)      (Technical)     (Backend Only)
-🧠 Machine Learning Stack
-🔹 Model
+```
 
-XGBoost Classifier
+---
 
-Hyperparameter tuned
+## 🧠 Machine Learning Stack
 
-Class-weight balanced
+### 🔹 Core Model
+- **XGBoost Classifier**
+- Hyperparameter tuned
+- Class-weight balanced
+- Cross-validated training
 
-5-fold cross validation
+### 🔹 Probability Calibration
+- `CalibratedClassifierCV`
+- Reliable confidence scoring
+- Reduced overconfidence bias
+- Improved Brier score
 
-🔹 Probability Calibration
+### 🔹 Explainable AI
+- **SHAP TreeExplainer**
+- Feature contribution breakdown
+- Risk impact direction (↑ increases / ↓ decreases risk)
+- Transparent decision reasoning
 
-CalibratedClassifierCV
+### 🔹 Hybrid Risk Engine
+Final risk is determined using:
 
-Reliable confidence scoring
+- ML prediction  
+- Port severity override logic  
+- Risk amplification rules  
+- Justified final decision  
 
-Reduced Brier score
+---
 
-🔹 Explainability
+## 📊 Feature Engineering (9 Core Features)
 
-SHAP TreeExplainer
+| Feature | Purpose |
+|----------|----------|
+| open_ports_count | Measures attack surface size |
+| service_count | Service diversity |
+| avg_cvss | Vulnerability severity |
+| uncommon_ports | Suspicious port usage |
+| os_flag | OS risk profiling |
+| port_severity_score | Aggregated port risk |
+| high_risk_port_count | Critical exposure level |
+| service_entropy | Service randomness |
+| cvss_variance | Vulnerability spread |
 
-Feature contribution breakdown
+---
 
-Risk impact direction
+## ⚙️ FastAPI Backend (Production Structured)
 
-🔹 Hybrid Scoring
+### 📡 API Endpoints
 
-ML prediction
+| Method | Endpoint | Purpose |
+|--------|----------|----------|
+| POST | `/scan` | Analyze Nmap XML (Dashboard view) |
+| GET | `/report/{scan_id}` | Full technical report with SHAP |
+| GET | `/admin/status` | Backend metrics (API key required) |
+| GET | `/health` | Health check |
+| GET | `/docs` | Swagger API UI |
 
-Port intelligence override logic
+---
 
-Severity amplification rules
+## 🚀 Quick Start
 
-📊 Feature Engineering (9 Core Features)
-Feature	Purpose
-open_ports_count	Attack surface size
-service_count	Service diversity
-avg_cvss	Vulnerability severity
-uncommon_ports	Suspicious port usage
-os_flag	OS risk profiling
-port_severity_score	Aggregated port risk
-high_risk_port_count	Critical exposure
-service_entropy	Service randomness
-cvss_variance	Vulnerability spread
-⚙️ FastAPI Backend (Production Ready)
-API Endpoints
-Method	Endpoint	Purpose
-POST	/scan	Analyze Nmap XML (Dashboard view)
-GET	/report/{scan_id}	Detailed technical report
-GET	/admin/status	Backend metrics (API key required)
-GET	/health	Health check
-GET	/docs	Swagger UI
-🚀 Quick Start
-1️⃣ Install Dependencies
+### 1️⃣ Install Dependencies
+
+```bash
 pip install -r requirements.txt
 pip install -r requirements_api.txt
-2️⃣ Start API Server
+```
+
+### 2️⃣ Start API Server
+
+```bash
 python api.py
+```
 
-API runs on:
+API runs at:
 
+```
 http://localhost:8000
+```
 
 Swagger UI:
 
+```
 http://localhost:8000/docs
-3️⃣ Analyze a Scan
+```
+
+### 3️⃣ Analyze a Scan
+
+```bash
 curl -X POST "http://localhost:8000/scan" \
   -F "xml_file=@nmap_scans/sample_scan.xml"
-🔎 What Makes This Different?
+```
 
-✔ Not just port listing
-✔ ML-based risk classification
-✔ Explainable AI decisions
-✔ Hybrid port + ML consensus
-✔ Drift detection monitoring
-✔ Auto-retraining capability
-✔ Clean API separation
-✔ Production deployment ready
+---
 
-📈 Model Performance (Test Set)
+## 🔎 What Makes This Different?
 
-Accuracy: ~84–90% (depending on dataset realism)
+✔ ML-based risk classification  
+✔ Explainable AI decisions  
+✔ Hybrid ML + Port Intelligence consensus  
+✔ Drift detection monitoring  
+✔ Auto-retraining pipeline  
+✔ Production-ready REST backend  
+✔ Clean frontend / admin separation  
 
-Weighted F1: ~0.84+
+> This is not a simple scanner output — this is structured **Risk Intelligence**.
 
-Calibrated confidence reliability
+---
 
-Lower Brier Score after calibration
+## 📈 Model Performance
 
-🛡 Security Intelligence Capabilities
+- **Accuracy:** ~84–90% (dataset dependent)  
+- **Weighted F1 Score:** ~0.84+  
+- Calibrated probability confidence  
+- Reduced Brier score after calibration  
+- Stable cross-validation performance  
 
-Detects high-risk exposure (SMB, RDP, DB ports)
+---
 
-CVE mapping with real-world examples
+## 🛡 Security Intelligence Capabilities
 
-MITRE ATT&CK tactic mapping
+- Detects high-risk exposure (SMB, RDP, DB ports)
+- CVE mapping with real-world examples
+- MITRE ATT&CK tactic mapping
+- Transparent risk justification
+- Host-level security score (0–100)
 
-Risk justification reasoning
+---
 
-Host-level security score (0–100)
+## 🔄 Drift Detection & Retraining
 
-🔄 Drift Detection & Retraining
+Monitors distribution shifts in:
 
-Monitors distribution shift in:
+- `open_ports_count`
+- `avg_cvss`
+- `service_count`
 
-open_ports_count
+Uses:
+- KS-Test
+- Statistical drift %
+- Threshold-based alerts
 
-avg_cvss
+Supports:
+- Automated retraining pipeline
+- Operational logging
+- Model lifecycle management
 
-service_count
+---
 
-Uses KS-test + statistical drift %
+## 📦 Project Structure
 
-Auto-retraining trigger logic
-
-Logs operational metrics
-
-📦 Project Structure
+```text
 AI_PortScan_Analyzer/
 │
 ├── api.py
+│
 ├── scripts/
 │   ├── predict_risk.py
 │   ├── train_model.py
 │   ├── drift_detection.py
 │   ├── retrain_pipeline.py
+│   └── run_engine.py
 │
 ├── data/
 │   ├── port_knowledge.py
@@ -172,75 +211,52 @@ AI_PortScan_Analyzer/
 │
 ├── model/
 ├── logs/
+│
 ├── requirements.txt
 ├── requirements_api.txt
 └── README.md
-🏷 Versioning
-v1.0
+```
 
-Console-based ML risk predictor
+---
 
-v2.0
+## 🏷 Version History
 
-FastAPI backend
+### 🔹 v1.0
+- Console-based ML risk predictor
 
-XGBoost integration
+### 🔹 v2.0 (Current)
+- FastAPI backend
+- XGBoost integration
+- Probability calibration
+- SHAP explainability
+- Hybrid scoring engine
+- Drift detection
+- Auto-retraining pipeline
+- Production-ready structure
 
-Probability calibration
+---
 
-SHAP explainability
-
-Hybrid scoring engine
-
-Drift monitoring
-
-Auto-retraining pipeline
-
-🎯 Use Cases
-
-SOC dashboards
-
-Vulnerability assessment automation
-
-Security analytics research
-
-AI-driven cybersecurity education
-
-Resume / portfolio demonstration
-
-🔐 Security Design
-
-No model internals exposed to dashboard
-
-Admin endpoint protected via API key
-
-No raw scan data persisted
-
-Temporary files cleaned automatically
-
-Structured error handling
-
-⭐ Why This Project Matters
+## ⭐ Why This Project Matters
 
 This project demonstrates:
 
-Applied Machine Learning
+- **Applied Machine Learning**
+- **Explainable AI (XAI)**
+- **Cybersecurity domain intelligence**
+- **Backend API architecture**
+- **Model monitoring & lifecycle management**
+- **Production-ready system design**
 
-Explainable AI
+> This is not a toy script — this is a structured **AI-powered security platform**.
 
-Cybersecurity domain knowledge
+---
 
-Backend engineering
+## 🏁 Status
 
-API architecture design
+- ✅ Production Structured  
+- ✅ Version 2.0  
+- ✅ Explainable AI Enabled  
+- ✅ Drift Monitoring Integrated  
+- ✅ API Architecture Deployed  
 
-Model monitoring & retraining strategy
-
-This is not a toy script — it is a structured AI-driven security platform.
-
-🏁 Status
-
-✅ Production-Structured
-✅ Version 2.0
-✅ Explainable AI Enabled
-✅ Drift Monitoring Integrated
+---
